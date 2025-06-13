@@ -71,6 +71,17 @@ definitions:
         example: Nguyễn Văn A
         type: string
     type: object
+  booklocationmodel.ReqCreateBookLocation:
+    properties:
+      bookId:
+        type: string
+      id:
+        type: string
+      location:
+        type: string
+      qrCodePath:
+        type: string
+    type: object
   bookmodel.BookForDashboard:
     properties:
       id:
@@ -1964,6 +1975,29 @@ paths:
       summary: Create list author
       tags:
       - authors
+  /book-locations:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Create Book Location
+        in: body
+        name: bookLocation
+        required: true
+        schema:
+          $ref: '#/definitions/booklocationmodel.ReqCreateBookLocation'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Created book location
+          schema:
+            $ref: '#/definitions/common.ResSuccess'
+      security:
+      - BearerAuth: []
+      summary: Create Book Location
+      tags:
+      - book-locations
   /books:
     get:
       consumes:

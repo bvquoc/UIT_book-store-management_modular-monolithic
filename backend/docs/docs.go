@@ -218,6 +218,44 @@ const docTemplate = `{
                 }
             }
         },
+        "/book-locations": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "book-locations"
+                ],
+                "summary": "Create Book Location",
+                "parameters": [
+                    {
+                        "description": "Create Book Location",
+                        "name": "bookLocation",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/booklocationmodel.ReqCreateBookLocation"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Created book location",
+                        "schema": {
+                            "$ref": "#/definitions/common.ResSuccess"
+                        }
+                    }
+                }
+            }
+        },
         "/books": {
             "get": {
                 "security": [
@@ -3703,6 +3741,23 @@ const docTemplate = `{
                 "name": {
                     "type": "string",
                     "example": "Nguyễn Văn A"
+                }
+            }
+        },
+        "booklocationmodel.ReqCreateBookLocation": {
+            "type": "object",
+            "properties": {
+                "bookId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "qrCodePath": {
+                    "type": "string"
                 }
             }
         },

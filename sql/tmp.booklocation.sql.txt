@@ -1,0 +1,33 @@
+CREATE TABLE BookLocation
+(
+    id          VARCHAR(12) NOT NULL PRIMARY KEY,
+    bookId      VARCHAR(12) NOT NULL,
+    location    VARCHAR(255) NOT NULL,  -- Location description (e.g., shelf, row)
+    qrCodePath  TEXT NOT NULL,          -- Path to the QR code image
+    createdAt   DATETIME DEFAULT CURRENT_TIMESTAMP NULL,
+    updatedAt   DATETIME DEFAULT CURRENT_TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP,
+    deletedAt   DATETIME NULL,
+    isActive    TINYINT(1) DEFAULT 1 NULL,
+
+    -- Foreign Key to Book table
+    CONSTRAINT fk_book FOREIGN KEY (bookId) REFERENCES Book(id),
+
+    -- Optional: Create an index for the BookId column to speed up lookups
+    INDEX idx_bookId (bookId)
+)
+CHARSET = utf8mb4;
+
+-- Inserting BookLocation Data
+INSERT INTO BookLocation (id, bookId, location, qrCodePath, createdAt, updatedAt, isActive)
+VALUES
+('loc1', 'dsslsln', 'Shelf A1, Row 3', 'https://example.com/qrcode/dsslsln.png', NOW(), NOW(), 1),
+('loc2', 's100ma', 'Shelf B2, Row 1', 'https://example.com/qrcode/s100ma.png', NOW(), NOW(), 1),
+('loc3', 'sdoraemont12', 'Shelf A2, Row 5', 'https://example.com/qrcode/sdoraemont12.png', NOW(), NOW(), 1),
+('loc4', 'sdoraemonv23', 'Shelf C1, Row 2', 'https://example.com/qrcode/sdoraemonv23.png', NOW(), NOW(), 1),
+('loc5', 'sdtls', 'Shelf B3, Row 4', 'https://example.com/qrcode/sdtls.png', NOW(), NOW(), 1),
+('loc6', 'sgktoan5', 'Shelf D1, Row 3', 'https://example.com/qrcode/sgktoan5.png', NOW(), NOW(), 1),
+('loc7', 'sgktoan7', 'Shelf D2, Row 1', 'https://example.com/qrcode/sgktoan7.png', NOW(), NOW(), 1),
+('loc8', 'sipm2', 'Shelf E1, Row 6', 'https://example.com/qrcode/sipm2.png', NOW(), NOW(), 1),
+('loc9', 'smb', 'Shelf A4, Row 2', 'https://example.com/qrcode/smb.png', NOW(), NOW(), 1),
+('loc10', 'stlbt', 'Shelf C2, Row 5', 'https://example.com/qrcode/stlbt.png', NOW(), NOW(), 1),
+('loc11', 'sttgbct', 'Shelf B4, Row 3', 'https://example.com/qrcode/sttgbct.png', NOW(), NOW(), 1);
