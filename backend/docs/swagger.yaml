@@ -1976,6 +1976,30 @@ paths:
       tags:
       - authors
   /book-locations:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Just get active locations
+        in: query
+        name: active
+        type: boolean
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: list book locations
+          schema:
+            $ref: '#/definitions/common.ResSuccess'
+        "400":
+          description: error
+          schema:
+            $ref: '#/definitions/common.AppError'
+      security:
+      - BearerAuth: []
+      summary: Get all book locations
+      tags:
+      - book-locations
     post:
       consumes:
       - application/json

@@ -46,6 +46,7 @@ const (
 	BookViewFeatureCode         = "BOOK_VIEW"
 
 	BookLocationCreateFeatureCode = "BOOK_LOCATION_CREATE"
+	BookLocationViewFeatureCode   = "BOOK_LOCATION_VIEW"
 
 	BookTitleCreateFeatureCode = "BOOK_TITLE_CREATE"
 	BookTitleUpdateFeatureCode = "BOOK_TITLE_UPDATE"

@@ -13,9 +13,8 @@ func SetupRoutes(router *gin.RouterGroup, appCtx appctx.AppContext) {
 		// Create a new book location
 		bookLocations.POST("", CreateBookLocation(appCtx))
 	}
-	//bookLocations := router.Group("/book-locations")
-	//{
-	//	// Create a new book location
-	//	bookLocations.POST("", CreateBookLocation(appCtx))
-	//}
+
+	// Get all book locations
+	bookLocations.GET("/", GetAllBookLocation(appCtx))
+
 }
